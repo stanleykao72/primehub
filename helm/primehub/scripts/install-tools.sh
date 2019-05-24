@@ -27,8 +27,8 @@ exec_script() {
 }
 
 
-copy_script bootstrap.sh body.json
+copy_script bootstrap.sh client-jupyterhub.json
 exec_script
-remove_script bootstrap.sh body.json client.secret
+remove_script bootstrap.sh client-jupyterhub.json client.secret
 
 exit 0

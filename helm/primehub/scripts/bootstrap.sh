@@ -24,7 +24,7 @@ fi
 echo "create client if not exists"
 if [ ! "$(${KCADM} get clients -r ${REALM} | jq "[.[] | select(.clientId | contains(\"${CLIENT}\"))] | length")" == 1 ]; then
   echo "create client ${CLIENT}"
-  CLIENT_ID=$(${KCADM} create clients -r ${REALM} -s clientId=${CLIENT} -s "redirectUris+=http://hub.${DOMAIN}/*" -f - --id < ./body.json)
+  CLIENT_ID=$(${KCADM} create clients -r ${REALM} -s clientId=${CLIENT} -s "redirectUris+=http://hub.${DOMAIN}/*" -f - --id < ./client-jupyterhub.json)
 else
   echo "found client ${CLIENT}"
   CLIENT_ID=$(${KCADM} get clients -r ${REALM} | jq -r ".[] | select(.clientId | contains(\"${CLIENT}\")) | .id")
